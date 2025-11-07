@@ -30,7 +30,9 @@ def transfer_bookmarks(source_pdf: Path, target_pdf: Path, output: Path) -> None
     parent_list: list[IndirectObject | None] = [None, None]
 
     # 递归函数：复制书签项
-    def copy_outline_items(outline_items: list, parent: IndirectObject | None = None):
+    def copy_outline_items(
+        outline_items: list, parent: IndirectObject | None = None
+    ) -> None:
         for item in outline_items:
             if isinstance(item, list):
                 parent = parent_list[-1]
@@ -61,8 +63,8 @@ def transfer_bookmarks(source_pdf: Path, target_pdf: Path, output: Path) -> None
 
 # 使用示例
 if __name__ == "__main__":
-    source = Path(r"D:\study\programming\sourse.pdf")
-    target = Path(r"D:\study\programming\target.pdf")
-    output = Path(r"D:\study\programming\out.pdf")
+    source = Path(r".\sourse.pdf")
+    target = Path(r".\sourse1.pdf")
+    output = Path(r".\out.pdf")
 
     transfer_bookmarks(source, target, output)
