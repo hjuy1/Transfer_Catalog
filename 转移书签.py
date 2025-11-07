@@ -64,7 +64,7 @@ def transfer_bookmarks(source_pdf: Path, target_pdf: Path, output: Path) -> None
 # 使用示例
 if __name__ == "__main__":
     source = Path(r".\sourse.pdf")
-    target = Path(r".\sourse1.pdf")
+    target = Path(r".\target.pdf")
     output = Path(r".\out.pdf")
 
     transfer_bookmarks(source, target, output)
