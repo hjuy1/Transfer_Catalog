@@ -33,15 +33,16 @@ def transfer_bookmarks(source_pdf: Path, target_pdf: Path, output: Path) -> None
     def copy_outline_items(
         outline_items: list, parent: IndirectObject | None = None
     ) -> None:
+        global time
         for item in outline_items:
             if isinstance(item, list):
-                parent = parent_list[-1]
                 parent_list.append(None)
+                parent = parent_list[-2]
                 # 如果是书签组（子书签），递归处理
                 copy_outline_items(item, parent)
                 parent_list.pop()
-            elif isinstance(item, Destination):
                 parent = parent_list[-2]
+            elif isinstance(item, Destination):
                 # 创建书签
                 title = item.title or "NoTitle"
                 # 在目标PDF中找到对应的页面
